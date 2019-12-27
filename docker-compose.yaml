@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  webp-service:
+    image: f8f196d8fff8
+    restart: always
+
+  nginx-webp:
+    image: nginx:alpine
+    container_name: "nginx-webp"
+    volumes:
+      - $PWD/nginx.conf:/etc/nginx/nginx.conf
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 10m
+        max-file: "3"
+        labels: "nginx-webp"
+        env: "os"
+    ports:
+      - "880:80"
+    command: nginx -c /etc/nginx/nginx.conf
+
+networks:
+  default:
+    external:
+      name: webp
