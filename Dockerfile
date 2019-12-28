@@ -4,7 +4,7 @@ LABEL version="1.0"
 LABEL maintainer="yhan219@sina.com"
 
 RUN apt-get -y update \
- && apt-get install -y git curl wget libjpeg-dev libpng-dev libtool autoconf automake make gcc g++
+ && apt-get install -y git curl wget libjpeg-dev libpng-dev libtool autoconf automake make gcc g++ imagemagick
 
 WORKDIR /usr/local/webp
 RUN wget http://downloads.webmproject.org/releases/webp/libwebp-1.0.3.tar.gz \
@@ -23,7 +23,7 @@ ENV PATH $PATH:/usr/local/webp/bin
 RUN ldconfig
 
 RUN mkdir -p /src
-COPY src/* /src
+ADD src/main.go /src/main.go
 WORKDIR /src
 
 EXPOSE 80

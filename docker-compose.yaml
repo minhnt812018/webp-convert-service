@@ -2,7 +2,9 @@ version: '3'
 
 services:
   webp-service:
-    image: f8f196d8fff8
+    image: yhan219/webp-convert-service:1.0
+    volumes:
+      - $PWD/src/main.go:/src/main.go
     restart: always
 
   nginx-webp:
