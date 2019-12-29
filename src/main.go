@@ -23,18 +23,13 @@ func requestHandler(response http.ResponseWriter, request *http.Request) {
 		return
 	}
 	var imgUrl string
-	segments := make([]string, 0)
 	query := request.URL.Query()
 	for q := range query {
 		key := q
 		element := request.FormValue(key)
 		if key == "url" {
 			imgUrl = element
-		} else if element == "true" {
-			segments = append(segments, fmt.Sprintf("-%v", key))
-		} else {
-			segments = append(segments, fmt.Sprintf("-%v", key), fmt.Sprintf("%v", element))
-		}
+		} 
 	}
 	if imgUrl=="" {
 		response.WriteHeader(http.StatusNotFound)
@@ -53,8 +48,7 @@ func requestHandler(response http.ResponseWriter, request *http.Request) {
 	}
 	defer resp.Body.Close()
 
-	segments = append(segments, "-o", "-", "--", "-")
-	cmd := exec.Command("cwebp", segments...)
+	cmd := exec.Command("sh", "-c", "rm -rf /src/RGB.jpeg && convert -colorspace RGB -quality 100 - /src/RGB.jpeg && cwebp -mt -exact -quiet /src/RGB.jpeg -o -")
 	cmd.Stdin = io.Reader(resp.Body)
 	cmd.Stdout = response
 	_ = cmd.Start()
