@@ -48,7 +48,7 @@ func requestHandler(response http.ResponseWriter, request *http.Request) {
 	}
 	defer resp.Body.Close()
 
-	cmd := exec.Command("convert", "-", "-quality", "50", "-define", "webp:exact=true", "webp:mt", "webp:quiet", "webp:-")
+	cmd := exec.Command("sh", "-c", "rm -rf /src/RGB.jpeg && convert -colorspace RGB -quality 100 - /src/RGB.jpeg && cwebp -mt -exact -quiet /src/RGB.jpeg -o -")
 	cmd.Stdin = io.Reader(resp.Body)
 	cmd.Stdout = response
 	_ = cmd.Start()

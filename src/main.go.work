@@ -48,7 +48,7 @@ func requestHandler(response http.ResponseWriter, request *http.Request) {
 	}
 	defer resp.Body.Close()
 
-	cmd := exec.Command("convert", "-", "-quality", "50", "-define", "webp:exact=true", "webp:mt", "webp:quiet", "webp:-")
+	cmd := exec.Command("convert", "-", "-quality", "100", "webp:-")
 	cmd.Stdin = io.Reader(resp.Body)
 	cmd.Stdout = response
 	_ = cmd.Start()

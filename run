@@ -1,3 +1,8 @@
 #!/bin/bash
-wget http://127.0.0.1:880/?url=https://storage.googleapis.com/leflair-assets/5e0476b1b94fec001af397ed.jpg
+wget http://127.0.0.1:880/?url=https://storage.googleapis.com/leflair-assets/5de0df52c4e053001a2c5186.jpg
+#wget https://storage.googleapis.com/leflair-assets/5e057d41250a41e2d1167350.jpg
+#wget http://127.0.0.1:880/?url=https://storage.googleapis.com/leflair-assets/5e033c253aecd83983ff9c20.jpg
 
+#101016 Dec 30 08:55 5e033c253aecd83983ff9c20.jpg.webp
+
+#https://images.staging.leflair.io/w380/q85/5de0df52c4e053001a2c5186.jpg

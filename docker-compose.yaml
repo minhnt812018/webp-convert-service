@@ -4,7 +4,7 @@ services:
   webp-service:
     build: .
     image: webp-convert-service:1.0.3
-    scale: 5
+    scale: 1
     volumes:
       - $PWD/src/main.go:/src/main.go
     restart: always
